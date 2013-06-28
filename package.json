@@ -1,0 +1,19 @@
+{
+  "name": "rudder",
+  "version": "0.0.1",
+  "description": "Steering routes into the rocks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "Journeyman",
+    "router"
+  ],
+  "author": "Brandon Farmer",
+  "license": "BSD",
+  "devDependencies": {
+    "tape": "~1.0.4"
+  }
+}
