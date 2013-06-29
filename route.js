@@ -37,7 +37,7 @@ Route.prototype.execute = function(req, res, path, rudder) {
     if (curr == self.middleware.length) {
       self.runFunc(req, res, path, rudder);
     } else {
-      self.middleware[curr](req, res, next);
+      self.middleware[curr].call(rudder, req, res, next);
     }
   }
   next();
