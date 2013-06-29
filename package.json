@@ -14,7 +14,6 @@
   "author": "Brandon Farmer",
   "license": "BSD",
   "devDependencies": {
-    "tape": "~1.0.4",
-    "sinon": "~1.7.3"
+    "tape": "~1.0.4"
   }
 }
