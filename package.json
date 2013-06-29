@@ -4,7 +4,7 @@
   "description": "dead simple router for journeyman",
   "main": "index.js",
   "scripts": {
-    "test": "node ./test/*_test.js"
+    "test": "for f in test/*_test.js; do node $f; done"
   },
   "repository": "",
   "keywords": [
