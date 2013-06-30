@@ -25,7 +25,7 @@ var Route = require('../route'),
     t.deepEqual(route.middleware, [middleware]);
   });
 
-  tape('allows for a multiple middleware', function(t) {
+  tape('allows for multiple middleware', function(t) {
     t.plan(1);
 
     var mw1 = 'mw1',
