@@ -1,6 +1,8 @@
 Rudder
 =======
 
+[![Build Status](https://travis-ci.org/bthesorceror/rudder.png?branch=master)](https://travis-ci.org/bthesorceror/rudder)
+
 The simple little router for Journeyman
 
 Example Usage
