@@ -1,12 +1,12 @@
 {
   "name": "rudder",
   "version": "0.0.1",
-  "description": "dead simple router for journeyman",
+  "description": "Simple router for journeyman",
   "main": "index.js",
   "scripts": {
     "test": "for f in test/*_test.js; do node $f; done"
   },
-  "repository": "",
+  "repository": "https://github.com/bthesorceror/rudder.git",
   "keywords": [
     "Journeyman",
     "router"
