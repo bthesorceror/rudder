@@ -17,16 +17,18 @@ Rudder.prototype.loopOver = function(req, res, path) {
     var route = this.routes[index];
     if (route.didMatch(req.method, path)) {
       route.execute(req, res, path, this);
-      return;
+      return true;
     }
   }
+  return false;
 }
 
 Rudder.prototype.middleware = function() {
   var self = this;
   return function(req, res, next) {
-    self.loopOver(req, res, self.parseUrl(req));
-    next();
+    if (!self.loopOver(req, res, self.parseUrl(req))) {
+      next();
+    }
     return;
   }
 }

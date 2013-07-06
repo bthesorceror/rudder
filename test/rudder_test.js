@@ -37,8 +37,8 @@ var tape   = require('tape'),
 
 (function() {
 
-  tape('loops over all the routes', function(t) {
-    t.plan(6);
+  tape('loops over all the routes and finds a route', function(t) {
+    t.plan(7);
 
     var rudder = new Rudder();
 
@@ -64,14 +64,33 @@ var tape   = require('tape'),
       t.equal(c, rudder);
     }
 
-    rudder.loopOver(req, res, path);
+    t.ok(rudder.loopOver(req, res, path));
+  });
+
+  tape('loops over all the routes and does not a route', function(t) {
+    t.plan(1);
+
+    var rudder = new Rudder();
+
+    var route1 = rudder.get('route1', null, {});
+    var route2 = rudder.get('route2', null, {});
+
+    var req = { method: 'GET' },
+        res = 'response',
+        path = 'path';
+
+    route2.didMatch = function(m, p) { return false; }
+    route1.didMatch = function() { return false; }
+
+
+    t.notOk(rudder.loopOver(req, res, path));
   });
 
 })();
 
 (function() {
 
-  tape('middleware runs properly', function(t) {
+  tape('middleware continue', function(t) {
     t.plan(4);
 
     var rudder = new Rudder();
@@ -83,6 +102,7 @@ var tape   = require('tape'),
       t.deepEqual(request, req);
       t.equals(response, 'response');
       t.equals(path, '/test');
+      return false;
     };
 
     var next = function() {
@@ -92,6 +112,29 @@ var tape   = require('tape'),
     var middleware = rudder.middleware();
 
     middleware(req, res, next);
+  });
+
+  tape('middleware does not continue', function(t) {
+    t.plan(1);
+
+    var rudder = new Rudder();
+    var called = false;
+
+    var req = { url: '/test?name=brandon' },
+        res = 'response';
+
+    rudder.loopOver = function(request, response, path) {
+      return true;
+    };
+
+    var next = function() {
+      called = true;
+    }
+
+    var middleware = rudder.middleware();
+    middleware(req, res, next);
+
+    t.notOk(called);
   });
 
 })();
