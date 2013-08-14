@@ -20,7 +20,7 @@ var tape   = require('tape'),
     t.plan(3);
 
     var method = 'GET',
-        regex = 'regex',
+        regex = /regex/,
         middleware = null,
         func = function() { };
 
@@ -30,7 +30,7 @@ var tape   = require('tape'),
 
     t.equals(rudder.routes.length, 1);
     t.equals(rudder.routes[0].method, 'GET');
-    t.equals(rudder.routes[0].regex, 'regex');
+    t.equals(rudder.routes[0].regex, regex);
   });
 
 })();

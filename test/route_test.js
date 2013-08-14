@@ -70,6 +70,20 @@ var Route = require('../route'),
   });
 })();
 
+(function() {
+  var method = 'GET',
+      regex = "/test.html"
+      func = function() { };
+
+  var route = new Route(method, regex, func);
+
+  tape('route is a match and correct method', function(t) {
+    t.plan(1);
+
+    t.ok(route.didMatch('GET', '/test.html'));
+  });
+})();
+
 // Run Function
 
 (function() {
