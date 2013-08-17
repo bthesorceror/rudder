@@ -78,9 +78,10 @@ var Route = require('../route'),
   var route = new Route(method, regex, func);
 
   tape('route is a match and correct method', function(t) {
-    t.plan(1);
+    t.plan(2);
 
     t.ok(route.didMatch('GET', '/test.html'));
+    t.notOk(route.didMatch('GET', '/test.html2'));
   });
 })();
 

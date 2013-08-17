@@ -1,7 +1,7 @@
 function Route(method, regex, middleware, func) {
   this.method = method;
   if (typeof(regex) === "string") {
-    regex = new RegExp(regex);
+    regex = new RegExp(regex + "$");
   }
   this.regex  = regex;
   if (func) {
