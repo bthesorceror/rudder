@@ -178,4 +178,42 @@ var tape   = require('tape'),
 
     rudder.post(regex, middleware, func);
   });
+
+  tape('del adds proper route', function(t) {
+    t.plan(4);
+
+    var rudder = new Rudder();
+
+    var regex      = 'regex',
+        middleware = null,
+        func       = function() { };
+
+    rudder.addRoute = function(m, r, mw, f) {
+      t.equals(m, "DELETE");
+      t.equals(r, regex);
+      t.equals(mw, middleware);
+      t.equals(f, func);
+    }
+
+    rudder.del(regex, middleware, func);
+  });
+
+  tape('put adds proper route', function(t) {
+    t.plan(4);
+
+    var rudder = new Rudder();
+
+    var regex      = 'regex',
+        middleware = null,
+        func       = function() { };
+
+    rudder.addRoute = function(m, r, mw, f) {
+      t.equals(m, "PUT");
+      t.equals(r, regex);
+      t.equals(mw, middleware);
+      t.equals(f, func);
+    }
+
+    rudder.put(regex, middleware, func);
+  });
 })();

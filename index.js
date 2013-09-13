@@ -47,4 +47,12 @@ Rudder.prototype.post = function(regex, middleware, func) {
   return this.addRoute("POST", regex, middleware, func);
 }
 
+Rudder.prototype.put = function(regex, middleware, func) {
+  return this.addRoute("PUT", regex, middleware, func);
+}
+
+Rudder.prototype.del = function(regex, middleware, func) {
+  return this.addRoute("DELETE", regex, middleware, func);
+}
+
 module.exports = Rudder;
