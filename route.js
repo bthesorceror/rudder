@@ -22,7 +22,7 @@ Route.prototype.setMiddleware = function(middleware) {
 }
 
 Route.prototype.didMatch = function(method, path) {
-  return method == this.method && this.regex.test(path);
+  return (method == this.method || !this.method) && this.regex.test(path);
 }
 
 Route.prototype.runFunc = function(req, res, path, rudder) {

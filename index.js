@@ -55,4 +55,12 @@ Rudder.prototype.del = function(regex, middleware, func) {
   return this.addRoute("DELETE", regex, middleware, func);
 }
 
+Rudder.prototype.head = function(regex, middleware, func) {
+  return this.addRoute("HEAD", regex, middleware, func);
+}
+
+Rudder.prototype.any = function(regex, middleware, func) {
+  return this.addRoute(null, regex, middleware, func);
+}
+
 module.exports = Rudder;

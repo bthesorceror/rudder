@@ -85,6 +85,21 @@ var Route = require('../route'),
   });
 })();
 
+(function() {
+  var method = null,
+      regex = "/test.html"
+      func = function() { };
+
+  var route = new Route(method, regex, func);
+
+  tape('route is a match and no method', function(t) {
+    t.plan(2);
+
+    t.ok(route.didMatch('GET', '/test.html'));
+    t.notOk(route.didMatch('GET', '/test.html2'));
+  });
+})();
+
 // Run Function
 
 (function() {

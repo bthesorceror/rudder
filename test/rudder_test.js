@@ -216,4 +216,42 @@ var tape   = require('tape'),
 
     rudder.put(regex, middleware, func);
   });
+
+  tape('head adds proper route', function(t) {
+    t.plan(4);
+
+    var rudder = new Rudder();
+
+    var regex      = 'regex',
+        middleware = null,
+        func       = function() { };
+
+    rudder.addRoute = function(m, r, mw, f) {
+      t.equals(m, null);
+      t.equals(r, regex);
+      t.equals(mw, middleware);
+      t.equals(f, func);
+    }
+
+    rudder.any(regex, middleware, func);
+  });
+
+  tape('any adds proper route', function(t) {
+    t.plan(4);
+
+    var rudder = new Rudder();
+
+    var regex      = 'regex',
+        middleware = null,
+        func       = function() { };
+
+    rudder.addRoute = function(m, r, mw, f) {
+      t.equals(m, "HEAD");
+      t.equals(r, regex);
+      t.equals(mw, middleware);
+      t.equals(f, func);
+    }
+
+    rudder.head(regex, middleware, func);
+  });
 })();
